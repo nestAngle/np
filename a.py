@@ -1066,9 +1066,9 @@ def lineBot(op):
                                 if settings["detectMention"] == True:
                                     contact = cl.getContact(sender)
                                     sendMessageWithMention(to, contact.mid)
-                                    cl.sendMessage(to, ")
+                                    cl.sendMessage(to, "ちんこ")
                                     time.sleep(0.5)
-                                    cl.sendContact(op.param1, "")
+                                    cl.sendContact(op.param1, "fcx")
                                 break
         if op.type == 55:
             print ("[ 55 ] 通知讀取消息")
