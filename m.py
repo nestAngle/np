@@ -783,7 +783,7 @@ def lineBot(op):
                     	cl.sendMessage(to,"またね！")
                     	ginfo = cl.getGroup(to)       
                     	cl.leaveGroup(to)
-                    elif "拡散希望" in msg.text:
+                    elif "拡散ゆたゆたやなやかやか" in msg.text:
                     	time.sleep(3.0)
                     	cl.sendMessage(to, "拡散するﾈｷﾞｯ\n\nとりあえずハートスタンプ押して♡↓↓\nline://home/post?userMid=u6f2f2f6d6c9ac00ec9e0e036cd4f5e5a&postId=1152678781509014248")
                     elif text.lower() == 'mid':
