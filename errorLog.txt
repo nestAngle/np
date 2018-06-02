@@ -1,0 +1,39 @@
+
+[<module 'time' (built-in)>] name 'admin' is not defined
+[<module 'time' (built-in)>] argument of type 'NoneType' is not iterable
+[<module 'time' (built-in)>] name 'admin' is not defined
+[<module 'time' (built-in)>] local variable 'ticket' referenced before assignment
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mid', parameterMap=None)
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mid', parameterMap=None)
+[<module 'time' (built-in)>] name 'admin' is not defined
+[<module 'time' (built-in)>] 'MENTION'
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mention.', parameterMap=None)
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mention.', parameterMap=None)
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] 'MENTION'
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mention.', parameterMap=None)
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mention.', parameterMap=None)
+[<module 'time' (built-in)>] 'MENTION'
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'client' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] local variable 'jj' referenced before assignment
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name '_name' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'JoinedGroups' is not defined
+[<module 'time' (built-in)>] name 'JoinedGroups' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'client' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] name 'client' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] 'MENTION'
+[<module 'time' (built-in)>] argument of type 'NoneType' is not iterable
+[<module 'time' (built-in)>] name 'client' is not defined
+[<module 'time' (built-in)>] name 'read' is not defined
+[<module 'time' (built-in)>] TalkException(code=0, reason='invalid mid', parameterMap=None)
