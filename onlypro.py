@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from negiX import *
+from linepy import *
 from datetime import datetime
 from time import sleep
 from bs4 import BeautifulSoup
@@ -7,7 +7,6 @@ from humanfriendly import format_timespan, format_size, format_number, format_le
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib.parse,timeit,data,atexit
 from gtts import gTTS
 from googletrans import Translator
-botStart = time.time()
 
 cl = LINE("dtcrf03pi22u@sute.jp", "Towas0328")
 channelToken = cl.getChannelResult()
