@@ -177,10 +177,12 @@ def lineBot(op):
                     G.preventedJoinByTicket = True
                     ki3.updateGroup(G)
                     ki3.reissueGroupTicket(op.param1)
-                    ki3.sendMessage(op.param1,"ねぎえるの保護botです…\n何かあったら↓へ\n\nhttp://line.me/ti/p/%40ubg0555p")
+                    timeNow = time.time()
+                    ki3.sendMessage(op.param1,"ねぎえるの保護botです…\n何かあったら↓へ\n\nhttp://line.me/ti/p/%40ubg0555p\n" + timeNow)
                 else:
                     cl.acceptGroupInvitation(op.param1)
-                    cl.sendMessage(op.param1,"権限者以外に招待されました…\n↓の垢で権限購入をしてから招待してください。\n\nhttp://line.me/ti/p/%40ubg0555p")
+                    timeNow = time.time()
+                    cl.sendMessage(op.param1,"権限者以外に招待されました…\n↓の垢で権限購入をしてから招待してください。\n\nhttp://line.me/ti/p/%40ubg0555p\n" + timeNow)
                     cl.leaveGroup(op.param1)
             if settings["ip"] == True:
                 Inviter = op.param3.replace("",',')
