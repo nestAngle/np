@@ -1,7 +1,8 @@
 {
     "blacklist": {},
     "admin": {
-        "ue0edee01d554184c78f2a5d68af285c8": true
+        "ue0edee01d554184c78f2a5d68af285c8": true,
+        "ub266c402af91517033f1d9e1779987b0": true
     },
     "db": false,
     "ip": false,
