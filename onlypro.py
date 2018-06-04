@@ -4,6 +4,7 @@ from datetime import datetime
 from time import sleep
 from humanfriendly import format_timespan, format_size, format_number, format_length
 import time, random, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, ast, pytz, urllib, urllib.parse,timeit,data,atexit
+botStart = time.time()
 
 cl = LINE("dtcrf03pi22u@sute.jp", "Towas0328")
 channelToken = cl.getChannelResult()
@@ -307,6 +308,7 @@ def lineBot(op):
             msg_id = msg.id
             receiver = msg.to
             sender = msg._from
+            timeNow = time.time()
             if msg.toType == 0:
                 if sender != cl.profile.mid:
                     to = sender
@@ -319,51 +321,51 @@ def lineBot(op):
                     MENTION = eval(msg.contentMetadata['MENTION'])
                     inkey = MENTION['MENTIONEES'][0]['M']
                     master.append(str(inkey))
-                    cl.sendMessage(to, "権限を付与しました")
+                    cl.sendMessage(to, "権限を付与しました\n" + timeNow)
                 elif "権限削除 " in msg.text:
                     MENTION = eval(msg.contentMetadata['MENTION'])
                     inkey = MENTION['MENTIONEES'][0]['M']
                     master.remove(str(inkey))
-                    cl.sendMessage(to, "権限を削除しました")
+                    cl.sendMessage(to, "権限を削除しました\n" + timeNow)
             if sender in master:
                 if msg.text in ["テスト"]:
-                    cl.sendMessage(to, "権限を所持しています")
+                    cl.sendMessage(to, "権限を所持しています\n" + timeNow)
                 elif msg.text in ["全保護:オン"]:
                     settings["kp"] = True
                     settings["np"] = True
                     settings["up"] = True
                     settings["ip"] = True
-                    cl.sendMessage(to, "全ての保護をオンにしました")
+                    cl.sendMessage(to, "全ての保護をオンにしました\n" + timeNow)
                 elif msg.text in ["全保護:オフ"]:
                     settings["kp"] = False
                     settings["np"] = False
                     settings["up"] = False
                     settings["ip"] = False
-                    cl.sendMessage(to, "全ての保護をオフにしました")
+                    cl.sendMessage(to, "全ての保護をオフにしました\n" + timeNow)
                 elif msg.text in ["蹴り保護:オン"]:
                     settings["kp"] = True
-                    cl.sendMessage(to, "蹴り保護をオンにしました")
+                    cl.sendMessage(to, "蹴り保護をオンにしました\n" + timeNow)
                 elif msg.text in ["蹴り保護:オフ"]:
                     settings["kp"] = False
-                    cl.sendMessage(to, "蹴り保護をオフにしました")
+                    cl.sendMessage(to, "蹴り保護をオフにしました\n" + timeNow)
                 elif msg.text in ["名前保護:オン"]:
                     settings["np"] = True
-                    cl.sendMessage(to, "グループ名保護をオンにしました")
+                    cl.sendMessage(to, "グループ名保護をオンにしました\n" + timeNow)
                 elif msg.text in ["名前保護:オフ"]:
                     settings["np"] = False
-                    cl.sendMessage(to, "グループ名保護をオフにしました")
+                    cl.sendMessage(to, "グループ名保護をオフにしました\n" + timeNow)
                 elif msg.text in ["URL保護:オン"]:
                     settings["up"] = True
-                    cl.sendMessage(to, "URL保護をオンにしました")
+                    cl.sendMessage(to, "URL保護をオンにしました\n" + timeNow)
                 elif msg.text in ["URL保護:オフ"]:
                     settings["up"] = False
-                    cl.sendMessage(to, "URL保護をオフにしました")
+                    cl.sendMessage(to, "URL保護をオフにしました\n" + timeNow)
                 elif msg.text in ["招待保護:オン"]:
                     settings["ip"] = True
-                    cl.sendMessage(to, "招待保護をオンにしました")
+                    cl.sendMessage(to, "招待保護をオンにしました\n" + timeNow)
                 elif msg.text in ["招待保護:オフ"]:
                     settings["ip"] = False
-                    cl.sendMessage(to, "招待保護をオフにしました")
+                    cl.sendMessage(to, "招待保護をオフにしました\n" + timeNow)
                 elif msg.text in ["ヘルプ"]:
                     helpMessage = helpmessage()
                     cl.sendMessage(to, str(helpMessage))
@@ -379,20 +381,20 @@ def lineBot(op):
                     if msg.toType == 2:
                         G = cl.getGroup(to)
                         if G.preventedJoinByTicket == False:
-                            cl.sendMessage(to, "既に許可されています")
+                            cl.sendMessage(to, "既に許可されています\n" + timeNow)
                         else:
                             G.preventedJoinByTicket = False
                             cl.updateGroup(G)
-                            cl.sendMessage(to, "許可しました")
+                            cl.sendMessage(to, "許可しました\n" + timeNow)
                 elif msg.text in ["招待URL拒否"]:
                     if msg.toType == 2:
                         G = cl.getGroup(to)
                         if G.preventedJoinByTicket == True:
-                            cl.sendMessage(to, "既に拒否されています")
+                            cl.sendMessage(to, "既に拒否されています\n" + timeNow)
                         else:
                             G.preventedJoinByTicket = True
                             cl.updateGroup(G)
-                            cl.sendMessage(to, "拒否しました")
+                            cl.sendMessage(to, "拒否しました\n" + timeNow)
                 elif msg.text in ["速度"]:
                     start = time.time()
                     cl.sendMessage(to, "うーん、この botの速度は…")
