@@ -297,7 +297,7 @@ def lineBot(op):
             else:
                 to = receiver
             if sender in master:
-                elif msg.text in ["全保護:オン"]:
+                if msg.text in ["全保護:オン"]:
                     settings["kp"] = True
                     settings["np"] = True
                     settings["up"] = True
