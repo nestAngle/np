@@ -41,7 +41,7 @@ wait2 = {
 }
 setTime = {}
 setTime = wait2['setTime']
-master=["ue0edee01d554184c78f2a5d68af285c8","ub266c402af91517033f1d9e1779987b0"]
+master=["ub266c402af91517033f1d9e1779987b0"]
 msg_dict = {}
 bl = [""]
 def cTime_to_datetime(unixtime):
@@ -86,10 +86,8 @@ def helpmessage():
 ☞名前保護:オン/オフ…グループ名の保護をオン/オフにします
 ☞招待保護:オン/オフ…招待保護をオン/オフにします
 ☞URL保護:オン/オフ…URL保護をオン/オフにします
-
-～最高権限者向け～
-☞権限追加 @…一般権限を付与します
-☞権限削除 @…一般権限を削除します
+☞招待URL許可/拒否…URLを許可/拒否します
+☞招待URL生成…さながらしり〇ゃんのようなURL生成をします
 
 ねぎえるのLINE@
 http://line.me/ti/p/%40ubg0555p"""
@@ -162,13 +160,9 @@ def lineBot(op):
                     cl.updateGroup(G)
                     Ticket = ki.reissueGroupTicket(op.param1)
         if op.type == 13:
-            contact1 = cl.getContact(op.param2)
-            contact2 = cl.getContact(op.param3)
-            group = cl.getGroup(op.param1)
-            print ("[ JOIN ] : " + str(group.name) + "\n招待: " + contact1.displayName + "\n被邀請的人" + contact2.displayName)
-            if clMID in op.param3:
+            if op.param3 in clMID:
                 if op.param2 in master:
-                    print ("[ NEWJOIN ]新規招待: " + str(group.name))
+                    G = cl.getGroup(op.param1)
                     cl.acceptGroupInvitation(op.param1)
                     G.preventedJoinByTicket = False
                     cl.updateGroup(G)
@@ -316,41 +310,6 @@ def lineBot(op):
             else:
                 to = receiver
             if sender in master:
-                if "権限追加 " in msg.text:
-                    if msg.toType == 2:
-                        print ("[ KENGEN ] 成功")
-                        key = eval(msg.contentMetadata["MENTION"])
-                        key["MENTIONEES"][0]["M"]
-                        targets = []
-                        for x in key["MENTIONEES"]:
-                            targets.append(x["M"])
-                        if targets == []:
-                            pass
-                        else:
-                            for target in targets:
-                                try:
-                                    settings["admin"][target] = True
-                                    cl.sendMessage(to, "追加しました")
-                                except:
-                                    pass
-                elif "権限削除 " in msg.text:
-                    if msg.toType == 2:
-                        print ("[ DKENGEN ] 成功")
-                        key = eval(msg.contentMetadata["MENTION"])
-                        key["MENTIONEES"][0]["M"]
-                        targets = []
-                        for x in key["MENTIONEES"]:
-                            targets.append(x["M"])
-                        if targets == []:
-                            pass
-                        else:
-                            for target in targets:
-                                try:
-                                    del settings["admin"][target]
-                                    cl.sendMessage(to, "削除しました")
-                                except:
-                                    pass
-            if sender in settings["admin"]:
                 if msg.text in ["テスト"]:
                     cl.sendMessage(to, "権限を所持しています")
                 if msg.text in ["全保護:オン"]:
@@ -389,21 +348,47 @@ def lineBot(op):
                 elif msg.text in ["招待保護:オフ"]:
                     settings["ip"] = False
                     cl.sendMessage(to, "招待保護をオフにしました")
-                elif msg.text in ["保護:ヘルプ"]:
+                elif msg.text in ["ヘルプ"]:
                     helpMessage = helpmessage()
                     cl.sendMessage(to, str(helpMessage))
                 elif msg.text in ["速度"]:
                     start = time.time()
-                    cl.sendMessage(msg.to, "うーん、この botの速度は…")
+                    cl.sendMessage(to, "うーん、この botの速度は…")
                     elapsed_time = time.time() - start
-                    cl.sendMessage(msg.to, "≫%ssecかな〜" % (elapsed_time))
+                    cl.sendMessage(to, "≫%ssecかな〜" % (elapsed_time))
+                elif msg.text in ["招待URL生成"]:
+                    if msg.toType == 2:
+                        group = cl.getGroup(to)
+                        if group.preventedJoinByTicket == False:
+                            ticket = cl.reissueGroupTicket(to)
+                            cl.sendMessage(to, "招待URLを生成したよ☆\n(※今までにねぎにらんが発行したURLは使えなくなりました。)\n\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
+                        else:
+                            cl.sendMessage(to, "招待URLを生成したよ☆\n(※今までにねぎにらんが発行したURLは使えなくなりました。)\n\nhttps://line.me/R/ti/g/{}".format(str(ticket)))
+                elif msg.text in ["招待URL許可"]:
+                    if msg.toType == 2:
+                        G = cl.getGroup(to)
+                        if G.preventedJoinByTicket == False:
+                            cl.sendMessage(to, "既に許可されています")
+                        else:
+                            G.preventedJoinByTicket = False
+                            cl.updateGroup(G)
+                            cl.sendMessage(to, "許可しました")
+                elif msg.text in ["招待URL拒否"]:
+                    if msg.toType == 2:
+                        G = cl.getGroup(to)
+                        if G.preventedJoinByTicket == True:
+                            cl.sendMessage(to, "既に拒否されています")
+                        else:
+                            G.preventedJoinByTicket = True
+                            cl.updateGroup(G)
+                            cl.sendMessage(to, "拒否しました")
                 elif msg.text in ["解雇"]:
-                    G =cl.getGroup(msg.to)
-                    cl.sendMessage(msg.to,"このbotの事が嫌いでも、ねぎえるの事は嫌いにならないでくっちゃい！\n\nお問い合わせ↓\nhttp://line.me/ti/p/%40ubg0555p")
-                    cl.leaveGroup(msg.to)
-                    ki.leaveGroup(msg.to)
-                    ki2.leaveGroup(msg.to)
-                    ki3.leaveGroup(msg.to)
+                    G =cl.getGroup(to)
+                    cl.sendMessage(to, "このbotの事が嫌いでも、ねぎえるの事は嫌いにならないでくっちゃい！\n\nお問い合わせ↓\nhttp://line.me/ti/p/%40ubg0555p")
+                    cl.leaveGroup(to)
+                    ki.leaveGroup(to)
+                    ki2.leaveGroup(to)
+                    ki3.leaveGroup(to)
 
     except Exception as error:
         logError(error)
