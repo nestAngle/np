@@ -13,13 +13,13 @@ channelToken = cl.getChannelResult()
 cl.log("TOKEN:" + str(cl.authToken))
 ki = LINE("tqsbm025mvwu@sute.jp", "Towas0328")
 channelToken = ki.getChannelResult()
-ki.log("TOKEN:" + str(cl.authToken))
+ki.log("TOKEN:" + str(ki.authToken))
 ki2 = LINE("u5mkv8t71l8h@sute.jp", "Towas0328")
-channelToken = ki.getChannelResult()
-ki.log("TOKEN:" + str(cl.authToken))
+channelToken = ki2.getChannelResult()
+ki2.log("TOKEN:" + str(ki2.authToken))
 ki3 = LINE("a4kd3fa1b41w@sute.jp", "Towas0328")
-channelToken = ki.getChannelResult()
-ki.log("TOKEN:" + str(cl.authToken))
+channelToken = ki3.getChannelResult()
+ki3.log("TOKEN:" + str(ki3.authToken))
 
 print ("=n=e=g=i=n=i=r=a=n=!=")
 
@@ -197,8 +197,10 @@ def lineBot(op):
                 else:
                     try:
                         cl.kickoutFromGroup(op.param1,[op.param2])
+                        cl.inviteIntoGroup(op.param1,[op.param3])
                     except:
                         random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
         if op.type == 19:
             if op.param2 in Bots:
                 pass
