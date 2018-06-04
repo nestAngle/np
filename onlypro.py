@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from linepy import *
+from negiX import *
 from datetime import datetime
 from time import sleep
 from bs4 import BeautifulSoup
