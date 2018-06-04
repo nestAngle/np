@@ -17,9 +17,9 @@
     "dblack": false,
     "dblacklist": false,
     "detectMention": true,
-    "inviteprotect": false,
+    "ip": false,
     "keyCommand": "",
-    "kickContact": false,
+    "np": false,
     "kickerjoin": false,
     "kickjoin": false,
     "kickmeber": true,
@@ -29,8 +29,8 @@
         "status": true,
         "target": {}
     },
-    "protect": false,
-    "qrprotect": false,
+    "kp": false,
+    "up": false,
     "reread": true,
     "timeline": true,
     "userAgent": [
